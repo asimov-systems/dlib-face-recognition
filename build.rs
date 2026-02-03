@@ -22,5 +22,5 @@ fn main() {
         }
     }
 
-    config.flag("-std=c++14").build("src/lib.rs");
+    config.build("src/lib.rs");
 }

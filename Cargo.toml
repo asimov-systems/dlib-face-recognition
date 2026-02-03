@@ -2,9 +2,9 @@
 name = "dlib-face-recognition"
 version = "0.3.2"
 authors = [
-    "Ashley <expenses@airmail.cc>",
-    "Ho Kim <great.ho.kim@gmail.com>",
-    "João Pedro Sanches Dovichi <jsanchesdovichi@gmail.com>",
+  "Ashley <expenses@airmail.cc>",
+  "Ho Kim <great.ho.kim@gmail.com>",
+  "João Pedro Sanches Dovichi <jsanchesdovichi@gmail.com>",
 ]
 edition = "2021"
 
@@ -18,15 +18,7 @@ build = "build.rs"
 
 include = ["src/**/*.rs", "build.rs", "Cargo.toml", "LICENSE"]
 
-[package.metadata.docs.rs]
-features = ["build-native"] # otherwise the build will fail in docs.rs
-
-# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
-
 [features]
-build-native = ["dlib-face-recognition-sys"]
-openblas = []
-
 embed-all = ["embed-fd-nn", "embed-fe-nn", "embed-lp"]
 embed-any = ["reqwest", "bzip2"]
 
@@ -36,17 +28,18 @@ embed-lp = ["embed-any"]
 
 [dependencies]
 cpp = "0.5"
-dlib-face-recognition-sys = { path = "sys", version = "19.24.0-rc.1", default-features = false, optional = true }
 image = { version = "0.24", default-features = false }
 bzip2 = { version = "0.4", optional = true }
-reqwest = { version = "0.11", optional = true, features = ["blocking"] }
+reqwest = { version = "0.11", optional = true, features = [
+  "blocking",
+  "rustls-tls",
+] }
 
 [build-dependencies]
 cpp_build = "0.5"
 sys-info = "0.9"
+vcpkg = "0.2.15"
+pkg-config = "0.3.32"
 
 [dev-dependencies]
 lazy_static = "1.4"
-
-[workspace]
-members = [".", "./cv", "./sys"]

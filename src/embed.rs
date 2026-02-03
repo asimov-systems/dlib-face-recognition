@@ -39,10 +39,10 @@ pub fn check_file_or_download(file: &ModelFile) {
 
         download_and_unzip(&client, file);
     } else {
-        println!(
-            "{} Already exists in files/ folder, skipping download.",
-            file
-        );
+        // println!(
+        //     "{} Already exists in files/ folder, skipping download.",
+        //     file
+        // );
     }
 }
 
@@ -66,11 +66,11 @@ pub fn download_and_unzip(client: &reqwest::blocking::Client, file: &ModelFile) 
     let path = download_path().join(&filename);
 
     if path.exists() {
-        println!("Already got '{}'", path.display());
+        // println!("Already got '{}'", path.display());
         return;
     }
 
-    println!("Downloading '{}'...", url);
+    // println!("Downloading '{}'...", url);
 
     let response = client.get(url).send().unwrap();
     let mut decoded = BzDecoder::new(response);

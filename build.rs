@@ -14,7 +14,7 @@ fn main() {
     {
         let dlib = pkg_config::Config::new()
             .statik(true)
-            .probe("dlib")
+            .probe("dlib-1")
             .unwrap();
 
         for include in dlib.include_paths {

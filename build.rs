@@ -20,6 +20,11 @@ fn main() {
         for include in dlib.include_paths {
             config.include(include);
         }
+
+        if cfg!(target_os = "linux") {
+            println!("cargo:rustc-link-lib=lapack");
+            println!("cargo:rustc-link-lib=blas");
+        }
     }
 
     config.flag("-std=c++14").build("src/lib.rs");

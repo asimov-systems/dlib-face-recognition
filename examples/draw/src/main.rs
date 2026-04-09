@@ -58,7 +58,7 @@ fn main() {
 
         let landmarks = landmarks.face_landmarks(&matrix, &r);
 
-        for point in landmarks.iter() {
+        for point in landmarks.points().iter() {
             draw_point(&mut image, &point, red);
         }
     }
@@ -72,7 +72,7 @@ fn main() {
             landmarks.face_landmarks(&matrix, &r)
         });
 
-        for point in landmarks.iter() {
+        for point in landmarks.points().iter() {
             draw_point(&mut image, &point, green);
         }
     }
